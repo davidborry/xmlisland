@@ -4,7 +4,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by david on 18/05/2016.
@@ -20,8 +19,8 @@ public class Transform extends Action {
     }
 
     @Override
-    public void getJSONDatas(){
-        super.getJSONDatas();
+    public void extractDatas(){
+        super.extractDatas();
 
         try{
             parameters = jsonObject.getJSONObject("parameters");

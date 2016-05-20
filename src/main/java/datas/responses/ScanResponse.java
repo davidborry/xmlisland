@@ -18,8 +18,8 @@ public class ScanResponse extends Response{
     }
 
     @Override
-    public void getJSONDatas(){
-        super.getJSONDatas();
+    public void extractDatas(){
+        super.extractDatas();
 
         try{
             biomeJSON = extras.getJSONArray("biomes");

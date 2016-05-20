@@ -22,7 +22,7 @@ public class LandTest {
         try{
             jsonObject = new JSONObject(s);
             land = new Land(jsonObject);
-            land.getJSONDatas();
+            land.extractDatas();
 
             String name = land.getName();
             String creek = land.getCreek();

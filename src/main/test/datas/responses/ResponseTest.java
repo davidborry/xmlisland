@@ -20,7 +20,7 @@ public class ResponseTest {
         try{
             jsonObject = new JSONObject(s);
             r = new Response(jsonObject);
-            r.getJSONDatas();
+            r.extractDatas();
 
             assertEquals(4,r.getCost());
             assertEquals("OK",r.getStatus());
@@ -30,5 +30,11 @@ public class ResponseTest {
         catch (JSONException e){
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void polymorphismTest(){
+
+
     }
 }

@@ -22,7 +22,7 @@ public class ScoutResponseTest {
         try{
             jsonObject = new JSONObject(s);
             r = new ScoutResponse(jsonObject);
-            r.getJSONDatas();
+            r.extractDatas();
 
             assertEquals(5,r.getCost());
             assertEquals("OK",r.getStatus());

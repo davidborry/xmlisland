@@ -15,8 +15,8 @@ public class Glimpse extends DirectionAction {
     }
 
     @Override
-    public void getJSONDatas(){
-        super.getJSONDatas();
+    public void extractDatas(){
+        super.extractDatas();
 
         try{
             range = parameters.getInt("range");

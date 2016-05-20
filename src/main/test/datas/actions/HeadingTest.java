@@ -1,6 +1,5 @@
 package main.test.datas.actions;
 
-import main.java.datas.actions.Action;
 import main.java.datas.actions.DirectionAction;
 import main.java.datas.actions.Glimpse;
 import org.json.JSONException;
@@ -24,7 +23,7 @@ public class HeadingTest {
         try{
             jsonObject = new JSONObject(s);
             action = new DirectionAction(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             String name = action.getName();
             String direction = action.getDirection();
@@ -46,7 +45,7 @@ public class HeadingTest {
         try{
             jsonObject = new JSONObject(s);
             action = new DirectionAction(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             String name = action.getName();
             String direction = action.getDirection();
@@ -68,7 +67,7 @@ public class HeadingTest {
         try{
             jsonObject = new JSONObject(s);
             action = new DirectionAction(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             String name = action.getName();
             String direction =  action.getDirection();
@@ -90,7 +89,7 @@ public class HeadingTest {
         try{
             jsonObject = new JSONObject(s);
             action = new DirectionAction(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             String name = action.getName();
             String direction =  action.getDirection();
@@ -112,7 +111,7 @@ public class HeadingTest {
         try{
             jsonObject = new JSONObject(s);
             action = new Glimpse(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             String name = action.getName();
             String direction =  action.getDirection();

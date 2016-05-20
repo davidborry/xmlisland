@@ -1,6 +1,5 @@
 package main.test.datas.responses;
 
-import junit.framework.Assert;
 import main.java.datas.responses.EchoResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,7 +20,7 @@ public class EchoResponseTest {
         try{
             jsonObject = new JSONObject(s);
             r = new EchoResponse(jsonObject);
-            r.getJSONDatas();
+            r.extractDatas();
 
             assertEquals(1,r.getCost());
             assertEquals("OK",r.getStatus());

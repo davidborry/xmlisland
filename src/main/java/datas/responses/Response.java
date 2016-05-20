@@ -1,5 +1,6 @@
 package main.java.datas.responses;
 
+import main.java.datas.JSONData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,16 +13,19 @@ import org.json.JSONObject;
  *  -Land
  *  -Move_To
  */
-public class Response {
+public class Response extends JSONData{
     protected String status;
     protected int cost;
-    protected JSONObject jsonObject, extras;
+    protected JSONObject extras;
+
+    private Error error;
 
     public Response(JSONObject jsonObject){
-        this.jsonObject=jsonObject;
+        super(jsonObject);
     }
 
-    public void getJSONDatas(){
+    @Override
+    public void extractDatas(){
         try{
             status = jsonObject.getString("status");
             cost = jsonObject.getInt("cost");
@@ -29,7 +33,13 @@ public class Response {
         }
 
         catch(JSONException e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            status = "ERROR";
+            cost = 0;
+
+            error = new Error(jsonObject);
+            error.extractDatas();
+
         }
     }
 
@@ -44,4 +54,6 @@ public class Response {
     public JSONObject getExtras(){
         return extras;
     }
+
+    public Error getError() {return error;}
 }

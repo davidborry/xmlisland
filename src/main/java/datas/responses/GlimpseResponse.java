@@ -19,8 +19,8 @@ public class GlimpseResponse extends Response {
     }
 
     @Override
-    public void getJSONDatas(){
-        super.getJSONDatas();
+    public void extractDatas(){
+        super.extractDatas();
 
         try{
             askedRange = extras.getInt("asked_range");

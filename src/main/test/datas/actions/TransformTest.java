@@ -24,7 +24,7 @@ public class TransformTest {
         try{
             jsonObject = new JSONObject(s);
             transform = new Transform(jsonObject);
-            transform.getJSONDatas();
+            transform.extractDatas();
 
             String name = transform.getName();
 

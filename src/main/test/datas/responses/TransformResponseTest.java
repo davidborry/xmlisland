@@ -20,7 +20,7 @@ public class TransformResponseTest {
         try{
             jsonObject = new JSONObject(s);
             r = new TransformResponse(jsonObject);
-            r.getJSONDatas();
+            r.extractDatas();
 
             assertEquals(5,r.getCost());
             assertEquals("OK",r.getStatus());

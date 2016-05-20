@@ -19,8 +19,8 @@ public class ExploreResponse extends Response {
     }
 
     @Override
-    public void getJSONDatas(){
-        super.getJSONDatas();
+    public void extractDatas(){
+        super.extractDatas();
 
         try{
             resourcesJSON = extras.getJSONArray("resources");

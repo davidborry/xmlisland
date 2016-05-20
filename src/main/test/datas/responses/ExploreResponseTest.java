@@ -1,6 +1,5 @@
 package main.test.datas.responses;
 
-import main.java.datas.responses.EchoResponse;
 import main.java.datas.responses.ExploreResponse;
 import main.java.datas.responses.resources.ExploredResource;
 import org.json.JSONException;
@@ -30,7 +29,7 @@ public class ExploreResponseTest {
         try{
             jsonObject = new JSONObject(s);
             r = new ExploreResponse(jsonObject);
-            r.getJSONDatas();
+            r.extractDatas();
 
             assertEquals(5,r.getCost());
             assertEquals("OK",r.getStatus());

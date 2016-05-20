@@ -16,9 +16,9 @@ public class EchoResponse extends Response {
     }
 
     @Override
-    public void getJSONDatas(){
+    public void extractDatas(){
 
-        super.getJSONDatas();
+        super.extractDatas();
         try{
             range = extras.getInt("range");
             found = extras.getString("found");

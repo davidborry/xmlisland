@@ -33,7 +33,7 @@ public class GlimpseResponseTest {
         try{
             jsonObject = new JSONObject(s);
             r = new GlimpseResponse(jsonObject);
-            r.getJSONDatas();
+            r.extractDatas();
 
             assertEquals(3,r.getCost());
             assertEquals("OK",r.getStatus());

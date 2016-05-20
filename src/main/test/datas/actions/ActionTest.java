@@ -21,7 +21,7 @@ public class ActionTest {
         try{
             jsonObject = new JSONObject(s);
             action = new Action(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             assertEquals("fly",action.getName());
         }
@@ -38,7 +38,7 @@ public class ActionTest {
             s = "{\"action\": \"scan\"}";
             jsonObject = new JSONObject(s);
             action = new Action(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             assertEquals("scan",action.getName());
         }
@@ -54,7 +54,7 @@ public class ActionTest {
             s = "{\"action\": \"stop\"}";
             jsonObject = new JSONObject(s);
             action = new Action(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             assertEquals("stop",action.getName());
         }
@@ -70,7 +70,7 @@ public class ActionTest {
             s = "{ \"action\": \"explore\" }";
             jsonObject = new JSONObject(s);
             action = new Action(jsonObject);
-            action.getJSONDatas();
+            action.extractDatas();
 
             assertEquals("explore",action.getName());
         }

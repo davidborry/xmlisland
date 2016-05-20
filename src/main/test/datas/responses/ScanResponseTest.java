@@ -21,7 +21,7 @@ public class ScanResponseTest {
         try{
             jsonObject = new JSONObject(s);
             r = new ScanResponse(jsonObject);
-            r.getJSONDatas();
+            r.extractDatas();
 
             assertEquals(2,r.getCost());
             assertEquals("OK",r.getStatus());

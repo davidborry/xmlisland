@@ -16,8 +16,8 @@ public class Land extends Action {
     }
 
     @Override
-    public void getJSONDatas(){
-        super.getJSONDatas();
+    public void extractDatas(){
+        super.extractDatas();
 
         try{
             parameters = jsonObject.getJSONObject("parameters");

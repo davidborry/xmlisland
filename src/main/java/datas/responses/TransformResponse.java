@@ -15,8 +15,8 @@ public class TransformResponse extends Response {
     }
 
     @Override
-    public void getJSONDatas(){
-        super.getJSONDatas();
+    public void extractDatas(){
+        super.extractDatas();
 
         try{
             production = extras.getInt("production");

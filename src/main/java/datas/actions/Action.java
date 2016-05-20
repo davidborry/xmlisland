@@ -1,5 +1,6 @@
 package main.java.datas.actions;
 
+import main.java.datas.JSONData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -7,17 +8,17 @@ import org.json.JSONObject;
  * Created by david on 18/05/2016.
  * Creates an Action object from a JSONObject and extracts all parameters
  */
-public class Action {
+public class Action extends JSONData {
 
     protected String name;
-    protected JSONObject jsonObject;
 
     public Action(JSONObject jsonObject){
-        this.jsonObject = jsonObject;
+        super(jsonObject);
     }
 
 
-    public void getJSONDatas(){
+    @Override
+    public void extractDatas(){
 
         try{
             name = jsonObject.getString("action");
