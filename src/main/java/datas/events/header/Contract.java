@@ -1,28 +1,27 @@
-package main.java.datas.actions;
+package main.java.datas.events.header;
 
 import jdk.internal.util.xml.XMLStreamWriter;
+import main.java.datas.JSONData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by david on 18/05/2016.
+ * Created by david on 20/05/2016.
  */
-public class Exploit extends Action {
+public class Contract extends JSONData {
 
-    private JSONObject parameters;
-    private String resource;
+    int amount;
+    String resource;
 
-    public Exploit(JSONObject jsonObject){
+    public Contract(JSONObject jsonObject){
         super(jsonObject);
     }
 
     @Override
     public void extractDatas(){
-        super.extractDatas();
-
         try{
-            parameters = jsonObject.getJSONObject("parameters");
-            resource = parameters.getString("resource");
+            this.amount = jsonObject.getInt("amount");
+            this.resource = jsonObject.getString("resource");
         }
 
         catch(JSONException e){
@@ -32,6 +31,10 @@ public class Exploit extends Action {
 
     @Override
     public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+
+    public int getAmount(){
+        return amount;
+    }
 
     public String getResource(){
         return resource;

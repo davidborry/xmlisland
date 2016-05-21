@@ -1,9 +1,13 @@
 package main.test.datas.actions;
 
+import jdk.internal.util.xml.XMLStreamException;
 import main.java.datas.actions.Action;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
 
 import static org.junit.Assert.assertEquals;
 
@@ -78,6 +82,31 @@ public class ActionTest {
         catch(JSONException e){
             e.printStackTrace();
         }
+    }
+
+    @Test
+    public void flyXmlTest(){
+        XMLOutputFactory factory = XMLOutputFactory.newInstance();
+
+        try{
+            XMLStreamWriter writer = factory.createXMLStreamWriter(System.out);
+
+            jsonObject = new JSONObject(s);
+            action = new Action(jsonObject);
+            action.extractDatas();
+
+            action.writeDatas(writer);
+
+        }
+
+        catch (javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+
+        catch(JSONException e){
+            e.printStackTrace();
+        }
+
     }
 
 }

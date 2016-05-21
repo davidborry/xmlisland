@@ -4,6 +4,9 @@ import main.java.datas.JSONData;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
+
 /**
  * Created by david on 18/05/2016.
  * Creates an Action object from a JSONObject and extracts all parameters
@@ -29,9 +32,28 @@ public class Action extends JSONData {
         }
     }
 
+    @Override
+    public void writeDatas(XMLStreamWriter writer){
+
+        try{
+            writeInitialDatas(writer);
+            writer.writeEndElement();
+
+        }
+
+        catch(javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+
+    }
+
     public String getName(){
         return name;
     }
 
+    public void writeInitialDatas(XMLStreamWriter writer) throws XMLStreamException{
+        writer.writeStartElement("action");
+        writer.writeAttribute("name",name);
+    }
 
 }

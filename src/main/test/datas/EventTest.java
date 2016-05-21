@@ -1,11 +1,15 @@
 package main.test.datas;
 
-import main.java.datas.Event;
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
+import main.java.datas.events.Event;
 import main.java.datas.actions.Action;
 import main.java.datas.responses.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
 
 import static org.junit.Assert.assertEquals;
 
@@ -70,6 +74,36 @@ public class EventTest {
         }
 
         catch(JSONException e){e.printStackTrace();}
+    }
+
+    @Test
+    public void xmlTest(){
+        XMLOutputFactory factory = XMLOutputFactory.newInstance();
+
+        try{
+            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(System.out));
+
+            jsonObject = new JSONObject(s1);
+            event = new Event(jsonObject);
+
+            event.extractDatas();
+            action = new Action(event.getData());
+
+            action.extractDatas();
+
+            event.setJsonData(action);
+
+            event.writeDatas(writer);
+
+        }
+
+        catch (javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+
+        catch(JSONException e){
+            e.printStackTrace();
+        }
     }
 
 }

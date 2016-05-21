@@ -1,5 +1,6 @@
 package main.java.datas.responses;
 
+import jdk.internal.util.xml.XMLStreamWriter;
 import main.java.datas.JSONData;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,6 +51,9 @@ public class Error extends JSONData {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
 
     public String[] getExceptions(){return  exceptions;}
     public String[] getMessages(){ return  messages;}

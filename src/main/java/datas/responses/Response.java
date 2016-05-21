@@ -1,8 +1,11 @@
 package main.java.datas.responses;
 
+import jdk.internal.util.xml.XMLStreamWriter;
 import main.java.datas.JSONData;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import javax.xml.stream.XMLStreamException;
 
 /**
  * Created by david on 18/05/2016.
@@ -43,6 +46,19 @@ public class Response extends JSONData{
         }
     }
 
+    @Override
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+
+        writeInitialDatas(writer);
+        writer.writeEndElement();
+
+    }
+
+    catch(javax.xml.stream.XMLStreamException e){
+        e.printStackTrace();
+    }}
+
     public int getCost(){
         return cost;
     }
@@ -56,4 +72,13 @@ public class Response extends JSONData{
     }
 
     public Error getError() {return error;}
+
+    public void writeInitialDatas(javax.xml.stream.XMLStreamWriter writer) throws XMLStreamException{
+        writer.writeStartElement("response");
+        writer.writeAttribute("status",status);
+
+        writer.writeStartElement("cost");
+        writer.writeCharacters(""+cost);
+        writer.writeEndElement();
+    }
 }

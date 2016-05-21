@@ -1,5 +1,6 @@
 package main.java.datas.actions;
 
+import jdk.internal.util.xml.XMLStreamWriter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,6 +27,9 @@ public class Glimpse extends DirectionAction {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
 
     public int getRange(){
         return range;

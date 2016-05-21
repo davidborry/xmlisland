@@ -1,5 +1,6 @@
 package main.java.datas.actions;
 
+import jdk.internal.util.xml.XMLStreamWriter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +34,9 @@ public class Transform extends Action {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
 
     public HashMap<String,Integer> getResources(){
         return resources;

@@ -1,5 +1,6 @@
 package main.java.datas.responses;
 
+import jdk.internal.util.xml.XMLStreamWriter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -27,6 +28,9 @@ public class TransformResponse extends Response {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
 
     public int getProduction(){return production;}
     public String getKind(){return kind;}

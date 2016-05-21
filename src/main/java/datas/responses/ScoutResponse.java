@@ -1,5 +1,6 @@
 package main.java.datas.responses;
 
+import jdk.internal.util.xml.XMLStreamWriter;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -34,6 +35,9 @@ public class ScoutResponse extends Response{
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
 
     public int getAltitude(){
         return altitude;

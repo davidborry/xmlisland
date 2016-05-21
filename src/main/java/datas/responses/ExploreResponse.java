@@ -1,5 +1,6 @@
 package main.java.datas.responses;
 
+import jdk.internal.util.xml.XMLStreamWriter;
 import main.java.datas.responses.resources.ExploredResource;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,6 +41,9 @@ public class ExploreResponse extends Response {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
 
     public ExploredResource[] getResources(){return resources;}
     public String[] getPois(){return pois;}

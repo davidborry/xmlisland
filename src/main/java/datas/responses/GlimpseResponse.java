@@ -1,5 +1,6 @@
 package main.java.datas.responses;
 
+import jdk.internal.util.xml.XMLStreamWriter;
 import main.java.datas.responses.resources.GlimpseResource;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +48,9 @@ public class GlimpseResponse extends Response {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
 
     public GlimpseResource[][] getResources(){
         return resources;
