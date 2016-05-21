@@ -36,7 +36,24 @@ public class Transform extends Action {
     }
 
     @Override
-    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+            writeInitialDatas(writer);
+
+
+
+            for(int i = 0; i < keys.length; i++){
+                writer.writeEmptyElement("resource");
+                writer.writeAttribute(keys[i],resources.get(keys[i])+"");
+            }
+
+            writer.writeEndElement();
+        }
+
+        catch(javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+    }
 
     public HashMap<String,Integer> getResources(){
         return resources;

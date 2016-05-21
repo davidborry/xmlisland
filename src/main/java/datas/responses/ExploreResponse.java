@@ -43,7 +43,38 @@ public class ExploreResponse extends Response {
     }
 
     @Override
-    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+
+        writeInitialDatas(writer);
+
+        writer.writeStartElement("extras");
+
+        writer.writeStartElement("resources");
+        for(int i = 0; i < resources.length; i++){
+            writer.writeEmptyElement("resource");
+            writer.writeAttribute("amount",resources[i].getAmount());
+            writer.writeAttribute("type",resources[i].getResource());
+            writer.writeAttribute("cond",resources[i].getCond());
+        }
+        writer.writeEndElement();
+
+        writer.writeStartElement("pois");
+        for(int i = 0; i < pois.length; i++) {
+            writer.writeStartElement("creek");
+            writer.writeCharacters(pois[i]);
+            writer.writeEndElement();
+        }
+        writer.writeEndElement();
+
+        writer.writeEndElement();
+        writer.writeEndElement();
+
+    }
+
+    catch(javax.xml.stream.XMLStreamException e){
+        e.printStackTrace();
+    }}
 
     public ExploredResource[] getResources(){return resources;}
     public String[] getPois(){return pois;}

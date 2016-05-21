@@ -68,23 +68,10 @@ public class EventsListTest {
     @Test
     public void xmlTest(){
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
+        XMLConverter xmlConverter = new XMLConverter("resources/qdb.json");
+        xmlConverter.extractJSON();
 
-        try{
-            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(System.out));
-
-            XMLConverter xmlConverter = new XMLConverter("resources/qdb.json");
-            xmlConverter.extractJSON();
-
-            Event[] events = xmlConverter.getEventsList().getEvents();
-
-            for(int i = 1; i < events.length; i++)
-                events[i].writeDatas(writer);
-
-        }
-
-        catch (javax.xml.stream.XMLStreamException e){
-            e.printStackTrace();
-        }
+        xmlConverter.makeXML();
 
     }
 }

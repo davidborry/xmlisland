@@ -37,7 +37,34 @@ public class ScoutResponse extends Response{
     }
 
     @Override
-    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+
+            writeInitialDatas(writer);
+
+            writer.writeStartElement("extras");
+
+            writer.writeStartElement("altitude");
+            writer.writeCharacters(altitude+"");
+            writer.writeEndElement();
+
+            writer.writeStartElement("resources");
+            for(int i = 0; i < resources.length; i++){
+                writer.writeStartElement("resource");
+                writer.writeCharacters(resources[i]);
+                writer.writeEndElement();
+            }
+            writer.writeEndElement();
+
+            writer.writeEndElement();
+            writer.writeEndElement();
+
+        }
+
+        catch(javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+    }
 
     public int getAltitude(){
         return altitude;

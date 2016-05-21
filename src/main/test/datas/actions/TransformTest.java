@@ -1,10 +1,13 @@
 package main.test.datas.actions;
 
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 import main.java.datas.actions.Transform;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
 import java.util.HashMap;
 
 import static org.junit.Assert.assertEquals;
@@ -36,6 +39,11 @@ public class TransformTest {
 
             assertEquals(6,a);
             assertEquals(11,b);
+
+            XMLOutputFactory factory = XMLOutputFactory.newInstance();
+            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(System.out));
+
+            transform.writeDatas(writer);
 
         }
 

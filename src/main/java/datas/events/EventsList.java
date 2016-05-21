@@ -42,7 +42,11 @@ public class EventsList {
                 //System.out.println(currentAction.getName() +"  " +currentResponse.getStatus());
 
                 actionEvent.setJsonData(currentAction);
-                responseEvent.setJsonData(currentResponse);
+
+                if(currentResponse.getStatus().equals("ERROR"))
+                    responseEvent.setJsonData(currentResponse.getError());
+                else
+                    responseEvent.setJsonData(currentResponse);
 
                 events[i] = actionEvent;
                 events[i+1] = responseEvent;

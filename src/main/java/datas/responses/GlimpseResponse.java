@@ -50,7 +50,41 @@ public class GlimpseResponse extends Response {
     }
 
     @Override
-    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+
+            writeInitialDatas(writer);
+            writer.writeStartElement("extras");
+
+            writer.writeStartElement("askedRange");
+            writer.writeCharacters(askedRange+"");
+            writer.writeEndElement();
+
+            writer.writeStartElement("report");
+
+            for(int i = 0; i < resources.length; i++){
+                writer.writeStartElement("biomes");
+                for(int j = 0; j < resources[i].length; j++){
+                    writer.writeEmptyElement("biome");
+                    writer.writeAttribute("name",resources[i][j].getResource());
+
+                    if(resources[i][j].getRate() != 0.0)
+                        writer.writeAttribute("rate",resources[i][j].getRate()+"");
+                }
+                writer.writeEndElement();
+            }
+
+            writer.writeEndElement();
+
+            writer.writeEndElement();
+
+            writer.writeEndElement();
+
+    }
+
+    catch(javax.xml.stream.XMLStreamException e){
+        e.printStackTrace();
+    }}
 
     public GlimpseResource[][] getResources(){
         return resources;

@@ -1,9 +1,14 @@
 package main.test.datas.responses;
 
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 import main.java.datas.responses.TransformResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -28,9 +33,18 @@ public class TransformResponseTest {
             assertEquals(1,r.getProduction());
             assertEquals("GLASS",r.getKind());
 
+            XMLOutputFactory factory = XMLOutputFactory.newInstance();
+            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(System.out));
+
+            r.writeDatas(writer);
+
         }
 
         catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        catch (XMLStreamException e){
             e.printStackTrace();
         }
     }

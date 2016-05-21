@@ -4,6 +4,8 @@ import jdk.internal.util.xml.XMLStreamWriter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.xml.stream.XMLStreamException;
+
 /**
  * Created by david on 18/05/2016.
  */
@@ -31,7 +33,19 @@ public class DirectionAction extends Action {
 
     @Override
     public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+            writeInitialDatas(writer);
 
+            writer.writeEmptyElement("parameters");
+            writer.writeAttribute("direction",direction);
+
+            writer.writeEndElement();
+
+        }
+
+        catch(XMLStreamException e){
+            e.printStackTrace();
+        }
     }
 
     public String getDirection(){

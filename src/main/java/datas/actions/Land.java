@@ -32,7 +32,26 @@ public class Land extends Action {
     }
 
     @Override
-    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+            writeInitialDatas(writer);
+
+            writer.writeStartElement("creek");
+            writer.writeCharacters(creek);
+            writer.writeEndElement();
+
+            writer.writeStartElement("people");
+            writer.writeCharacters(people+"");
+            writer.writeEndElement();
+
+            writer.writeEndElement();
+
+        }
+
+        catch(javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+    }
 
     public String getCreek(){
         return creek;

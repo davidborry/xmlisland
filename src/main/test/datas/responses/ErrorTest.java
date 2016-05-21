@@ -1,9 +1,13 @@
 package main.test.datas.responses;
 
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 import main.java.datas.responses.Error;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
 
 /**
  * Created by david on 20/05/2016.
@@ -76,9 +80,14 @@ public class ErrorTest {
             System.out.println(exceptions[0]);
             System.out.println(messages[0]);
             System.out.println(stackTrace[0][6]);
+
+            XMLOutputFactory factory = XMLOutputFactory.newInstance();
+            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(System.out));
+
+            error.writeDatas(writer);
         }
 
-        catch (JSONException e){
+        catch (Exception e){
             e.printStackTrace();
         }
     }

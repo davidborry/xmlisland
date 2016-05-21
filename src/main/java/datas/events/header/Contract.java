@@ -10,8 +10,8 @@ import org.json.JSONObject;
  */
 public class Contract extends JSONData {
 
-    int amount;
-    String resource;
+    private int amount;
+    private String resource;
 
     public Contract(JSONObject jsonObject){
         super(jsonObject);

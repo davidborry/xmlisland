@@ -31,7 +31,31 @@ public class EchoResponse extends Response {
     }
 
     @Override
-    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+
+            writeInitialDatas(writer);
+
+            writer.writeStartElement("extras");
+
+            writer.writeStartElement("range");
+            writer.writeCharacters(range+"");
+            writer.writeEndElement();
+
+            writer.writeStartElement("found");
+            writer.writeCharacters(found);
+            writer.writeEndElement();
+
+
+            writer.writeEndElement();
+            writer.writeEndElement();
+
+        }
+
+        catch(javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+    }
 
     public int getRange(){
         return range;

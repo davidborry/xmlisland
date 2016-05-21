@@ -30,7 +30,31 @@ public class TransformResponse extends Response {
     }
 
     @Override
-    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+
+            writeInitialDatas(writer);
+
+            writer.writeStartElement("extras");
+
+            writer.writeStartElement("production");
+            writer.writeCharacters(production+"");
+            writer.writeEndElement();
+
+            writer.writeStartElement("kind");
+            writer.writeCharacters(kind);
+            writer.writeEndElement();
+
+            writer.writeEndElement();
+
+            writer.writeEndElement();
+
+        }
+
+        catch(javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+    }
 
     public int getProduction(){return production;}
     public String getKind(){return kind;}

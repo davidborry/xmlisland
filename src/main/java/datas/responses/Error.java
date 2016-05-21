@@ -53,7 +53,42 @@ public class Error extends JSONData {
     }
 
     @Override
-    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){}
+    public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
+        try{
+
+            writer.writeStartElement("response");
+            writer.writeAttribute("status","Error");
+
+            writer.writeStartElement("exceptions");
+
+            for(int i = 0; i < exceptions.length; i++){
+                writer.writeEmptyElement("exception");
+                writer.writeAttribute("name",exceptions[i]);
+            }
+            writer.writeEndElement();
+
+            writer.writeStartElement("stackTrace");
+            for(int i = 0; i < stackTrace.length; i++)
+                for(int j = 0; j < stackTrace[i].length; j++){
+                    writer.writeEmptyElement("stack");
+                    writer.writeAttribute("trace",stackTrace[i][j]);
+                }
+            writer.writeEndElement();
+            writer.writeStartElement("messages");
+            for(int i = 0; i < messages.length; i++){
+                writer.writeEmptyElement("message");
+                writer.writeAttribute("name",messages[i]);
+            }
+
+            writer.writeEndElement();
+            writer.writeEndElement();
+
+        }
+
+        catch(javax.xml.stream.XMLStreamException e){
+            e.printStackTrace();
+        }
+    }
 
     public String[] getExceptions(){return  exceptions;}
     public String[] getMessages(){ return  messages;}
