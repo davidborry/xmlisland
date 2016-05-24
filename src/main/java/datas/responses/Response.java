@@ -2,6 +2,7 @@ package main.java.datas.responses;
 
 import jdk.internal.util.xml.XMLStreamWriter;
 import main.java.datas.JSONData;
+import main.java.datas.Stats;
 import org.json.JSONException;
 import org.json.JSONObject;
 
