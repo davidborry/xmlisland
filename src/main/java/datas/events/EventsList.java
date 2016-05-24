@@ -1,5 +1,6 @@
 package main.java.datas.events;
 
+import main.java.datas.Stats;
 import main.java.datas.actions.*;
 import main.java.datas.events.header.JSONHeader;
 import main.java.datas.responses.*;
@@ -17,10 +18,12 @@ public class EventsList {
 
     private Action currentAction;
     private Response currentResponse;
+    private Stats stats;
 
     public EventsList(JSONArray jsonArray){
         this.jsonArray = jsonArray;
         events = new Event[jsonArray.length()];
+        this.stats = new Stats();
     }
 
     public void extractEvents(){
@@ -38,6 +41,7 @@ public class EventsList {
                 identify(name,actionEvent.getData(),responseEvent.getData());
                 currentAction.extractDatas();
                 currentResponse.extractDatas();
+                stats.incrementCost(currentAction.getName(),currentResponse.getCost());
 
                 //System.out.println(currentAction.getName() +"  " +currentResponse.getStatus());
 
@@ -56,9 +60,11 @@ public class EventsList {
                 e.printStackTrace();
             }
         }
+        stats.get();
     }
 
-    public void identify(String name, JSONObject action, JSONObject response){
+    public void identify(String name, JSONObject action, JSONObject response) throws JSONException {
+        System.out.println("ok");
         switch(name){
             case "fly":
             case "stop":
@@ -118,6 +124,7 @@ public class EventsList {
                 currentResponse = new Response(response);
                 break;
         }
+
     }
 
     public void makeHeader(){
