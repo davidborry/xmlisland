@@ -64,6 +64,10 @@ public class JSONHeader extends JSONData {
                 writer.writeAttribute("resource",contracts[i].getResource());
             }
 
+            writer.writeStartElement("budget");
+            writer.writeCharacters(budget+"");
+            writer.writeEndElement();
+
             writer.writeEndElement();
         }
 

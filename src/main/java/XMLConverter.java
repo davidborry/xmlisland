@@ -4,12 +4,12 @@ import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 import main.java.datas.JSONFile;
 import main.java.datas.events.Event;
 import main.java.datas.events.EventsList;
+import main.java.datas.responses.Response;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 import java.io.FileWriter;
-import java.io.IOException;
 
 /**
  * Created by david on 21/05/2016.
@@ -61,5 +61,13 @@ public class XMLConverter {
         catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void writeStats(){
+        writeTotalCost();
+    }
+
+    public void writeTotalCost(){
+        System.out.println("TOTAL COST : " + Response.getTotalCost());
     }
 }

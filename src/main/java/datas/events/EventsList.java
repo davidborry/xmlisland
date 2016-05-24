@@ -70,6 +70,7 @@ public class EventsList {
             case "move_to":
                 currentAction = new DirectionAction(action);
                 currentResponse = new Response(response);
+
                 break;
 
             case "echo":

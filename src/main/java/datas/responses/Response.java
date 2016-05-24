@@ -27,12 +27,16 @@ public class Response extends JSONData{
         super(jsonObject);
     }
 
+    private static int TOTAL_COST = 0, FLY_COST=0, HEADING_COST=0, STOP_COST=0, LAND_COST=0,MOVE_COST=0;
+
     @Override
     public void extractDatas(){
         try{
             status = jsonObject.getString("status");
             cost = jsonObject.getInt("cost");
             extras = jsonObject.getJSONObject("extras");
+
+            TOTAL_COST+=cost;
         }
 
         catch(JSONException e){
@@ -77,8 +81,33 @@ public class Response extends JSONData{
         writer.writeStartElement("response");
         writer.writeAttribute("status",status);
 
-        writer.writeStartElement("cost");
-        writer.writeCharacters(""+cost);
-        writer.writeEndElement();
+        writer.writeAttribute("cost",""+cost);
     }
+
+    public static int getTotalCost(){return TOTAL_COST;}
+
+    public void incrementActionCost(String name){
+        TOTAL_COST+=cost;
+        switch(name){
+            case "fly":
+                FLY_COST+=cost;
+                break;
+            case "heading":
+                HEADING_COST+=cost;
+                break;
+            case "stop":
+                STOP_COST+=cost;
+                break;
+            case "land":
+                LAND_COST+=cost;
+                break;
+            case "move_to":
+                MOVE_COST+=cost;
+                break;
+
+            default:
+                break;
+        }
+    }
+
 }

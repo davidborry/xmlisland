@@ -73,5 +73,7 @@ public class EventsListTest {
 
         xmlConverter.makeXML();
 
+        xmlConverter.writeStats();
+
     }
 }
