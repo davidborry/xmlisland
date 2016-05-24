@@ -1,5 +1,4 @@
 package main.java;
-
 import main.java.datas.JSONFile;
 
 import java.io.IOException;
