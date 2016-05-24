@@ -4,7 +4,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Created by david on 18/05/2016.
@@ -16,8 +18,16 @@ public class JSONFile {
 
     public JSONFile(String path){
         this.path = path;
-        datas = readFile();
-        extractJson();
+
+        try{
+            datas = readFile();
+            extractJson();
+        }
+
+        catch(Exception e){
+            System.err.println("Le fichier " + path+ " n'existe pas ou ne correspond pas au bon format.");
+        }
+
     }
 
     public void extractJson(){
@@ -35,20 +45,15 @@ public class JSONFile {
         return jsonDatas;
     }
 
-    public String readFile(){
+    public String readFile() throws IOException{
         String s = "";
 
-        try{
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-            String c;
-            while((c = bufferedReader.readLine()) != null){
-                s+=c+"\n";
-            }
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
+        String c;
+        while((c = bufferedReader.readLine()) != null){
+            s+=c+"\n";
         }
 
-        catch(Exception e){
-            s = "";
-        }
 
         return s;
     }
