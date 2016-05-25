@@ -36,13 +36,8 @@ public class Land extends Action {
         try{
             writeInitialDatas(writer);
 
-            writer.writeStartElement("creek");
-            writer.writeCharacters(creek);
-            writer.writeEndElement();
-
-            writer.writeStartElement("people");
-            writer.writeCharacters(people+"");
-            writer.writeEndElement();
+            writeSimpleElement(writer,"creek",creek);
+            writeSimpleElement(writer,"people",people+"");
 
             writer.writeEndElement();
 

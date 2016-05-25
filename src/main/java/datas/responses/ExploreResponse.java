@@ -61,9 +61,7 @@ public class ExploreResponse extends Response {
 
         writer.writeStartElement("pois");
         for(int i = 0; i < pois.length; i++) {
-            writer.writeStartElement("creek");
-            writer.writeCharacters(pois[i]);
-            writer.writeEndElement();
+            writeSimpleElement(writer,"creek",pois[i]);
         }
         writer.writeEndElement();
 

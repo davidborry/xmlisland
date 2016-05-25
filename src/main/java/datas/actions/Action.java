@@ -14,6 +14,7 @@ import javax.xml.stream.XMLStreamWriter;
 public class Action extends JSONData {
 
     protected String name;
+    public static int NBFLY = 0;
 
     public Action(JSONObject jsonObject){
         super(jsonObject);
@@ -54,6 +55,15 @@ public class Action extends JSONData {
     public void writeInitialDatas(XMLStreamWriter writer) throws XMLStreamException{
         writer.writeStartElement("action");
         writer.writeAttribute("name",name);
+
+        if(name.equals("fly")) {
+            NBFLY++;
+            if(NBFLY>=2)
+                writer.writeAttribute("style","display:none;");
+        }
+
+        else
+            NBFLY=0;
     }
 
 }

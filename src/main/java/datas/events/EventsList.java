@@ -1,6 +1,5 @@
 package main.java.datas.events;
 
-import main.java.datas.Stats;
 import main.java.datas.actions.*;
 import main.java.datas.events.header.JSONHeader;
 import main.java.datas.responses.*;
@@ -18,17 +17,16 @@ public class EventsList {
 
     private Action currentAction;
     private Response currentResponse;
-    private Stats stats;
 
     public EventsList(JSONArray jsonArray){
         this.jsonArray = jsonArray;
         events = new Event[jsonArray.length()];
-        this.stats = new Stats();
     }
 
     public void extractEvents(){
         makeHeader();
         for(int i = 1; i < jsonArray.length()-1; i+=2){
+
             try{
                 Event actionEvent = new Event(jsonArray.getJSONObject(i));
                 Event responseEvent = new Event(jsonArray.getJSONObject(i+1));
@@ -41,7 +39,6 @@ public class EventsList {
                 identify(name,actionEvent.getData(),responseEvent.getData());
                 currentAction.extractDatas();
                 currentResponse.extractDatas();
-                stats.incrementCost(currentAction.getName(),currentResponse.getCost());
 
                 //System.out.println(currentAction.getName() +"  " +currentResponse.getStatus());
 
@@ -60,11 +57,9 @@ public class EventsList {
                 e.printStackTrace();
             }
         }
-        stats.get();
     }
 
-    public void identify(String name, JSONObject action, JSONObject response) throws JSONException {
-        System.out.println("ok");
+    public void identify(String name, JSONObject action, JSONObject response){
         switch(name){
             case "fly":
             case "stop":
@@ -101,7 +96,7 @@ public class EventsList {
 
             case "glimpse":
                 currentAction = new Glimpse(action);
-                currentResponse = new GlimpseResponse(action);
+                currentResponse = new GlimpseResponse(response);
                 break;
 
             case "explore":
@@ -124,7 +119,6 @@ public class EventsList {
                 currentResponse = new Response(response);
                 break;
         }
-
     }
 
     public void makeHeader(){

@@ -2,6 +2,7 @@ package main.java.datas;
 
 import org.json.JSONObject;
 
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
 
 /**
@@ -17,4 +18,10 @@ public abstract class JSONData {
     public abstract void extractDatas();
 
     public abstract void writeDatas(XMLStreamWriter writer);
+
+    public void writeSimpleElement(XMLStreamWriter writer,String tag, String content) throws XMLStreamException{
+        writer.writeStartElement(tag);
+        writer.writeCharacters(content);
+        writer.writeEndElement();
+    }
 }

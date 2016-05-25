@@ -2,7 +2,7 @@ package main.java.datas.responses;
 
 import jdk.internal.util.xml.XMLStreamWriter;
 import main.java.datas.JSONData;
-import main.java.datas.Stats;
+import main.java.datas.actions.Action;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -41,7 +41,7 @@ public class Response extends JSONData{
         }
 
         catch(JSONException e){
-            //e.printStackTrace();
+            e.printStackTrace();
             status = "ERROR";
             cost = 0;
 
@@ -81,6 +81,10 @@ public class Response extends JSONData{
     public void writeInitialDatas(javax.xml.stream.XMLStreamWriter writer) throws XMLStreamException{
         writer.writeStartElement("response");
         writer.writeAttribute("status",status);
+
+        if(Action.NBFLY>=2)
+            writer.writeAttribute("style","display:none;");
+
 
         writer.writeAttribute("cost",""+cost);
     }

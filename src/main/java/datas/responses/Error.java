@@ -60,27 +60,21 @@ public class Error extends JSONData {
             writer.writeAttribute("status","Error");
 
             writer.writeStartElement("exceptions");
-
-            for(int i = 0; i < exceptions.length; i++){
-                writer.writeEmptyElement("exception");
-                writer.writeAttribute("name",exceptions[i]);
-            }
+            for(int i = 0; i < exceptions.length; i++)
+                writeSimpleElement(writer,"exception",exceptions[i]);
             writer.writeEndElement();
 
             writer.writeStartElement("stackTrace");
             for(int i = 0; i < stackTrace.length; i++)
-                for(int j = 0; j < stackTrace[i].length; j++){
-                    writer.writeEmptyElement("stack");
-                    writer.writeAttribute("trace",stackTrace[i][j]);
-                }
+                for(int j = 0; j < stackTrace[i].length; j++)
+                    writeSimpleElement(writer,"trace",stackTrace[i][j]);
             writer.writeEndElement();
-            writer.writeStartElement("messages");
-            for(int i = 0; i < messages.length; i++){
-                writer.writeEmptyElement("message");
-                writer.writeAttribute("name",messages[i]);
-            }
 
+            writer.writeStartElement("messages");
+            for(int i = 0; i < messages.length; i++)
+                writeSimpleElement(writer,"message",messages[i]);
             writer.writeEndElement();
+
             writer.writeEndElement();
 
         }

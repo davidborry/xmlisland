@@ -50,17 +50,13 @@ public class ScanResponse extends Response{
             writer.writeStartElement("extras");
 
             writer.writeStartElement("biomes");
-            for(int i = 0; i < biomes.length; i++){
-                writer.writeEmptyElement("biome");
-                writer.writeAttribute("name",biomes[i]);
-            }
+            for(int i = 0; i < biomes.length; i++)
+                writeSimpleElement(writer,"biome",biomes[i]);
             writer.writeEndElement();
 
             writer.writeStartElement("creeks");
-            for(int i = 0; i < creeks.length; i++){
-                writer.writeEmptyElement("creek");
-                writer.writeAttribute("name",creeks[i]);
-            }
+            for(int i = 0; i < creeks.length; i++)
+                writeSimpleElement(writer,"creek",creeks[i]);
             writer.writeEndElement();
 
             writer.writeEndElement();

@@ -38,13 +38,8 @@ public class EchoResponse extends Response {
 
             writer.writeStartElement("extras");
 
-            writer.writeStartElement("range");
-            writer.writeCharacters(range+"");
-            writer.writeEndElement();
-
-            writer.writeStartElement("found");
-            writer.writeCharacters(found);
-            writer.writeEndElement();
+            writeSimpleElement(writer,"range",range+"");
+            writeSimpleElement(writer,"found",found);
 
 
             writer.writeEndElement();

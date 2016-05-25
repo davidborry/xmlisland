@@ -44,15 +44,11 @@ public class ScoutResponse extends Response{
 
             writer.writeStartElement("extras");
 
-            writer.writeStartElement("altitude");
-            writer.writeCharacters(altitude+"");
-            writer.writeEndElement();
+            writeSimpleElement(writer,"altitude",altitude+"");
 
             writer.writeStartElement("resources");
             for(int i = 0; i < resources.length; i++){
-                writer.writeStartElement("resource");
-                writer.writeCharacters(resources[i]);
-                writer.writeEndElement();
+                writeSimpleElement(writer,"resource",resources[i]);
             }
             writer.writeEndElement();
 

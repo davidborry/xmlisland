@@ -56,20 +56,22 @@ public class GlimpseResponse extends Response {
             writeInitialDatas(writer);
             writer.writeStartElement("extras");
 
-            writer.writeStartElement("askedRange");
-            writer.writeCharacters(askedRange+"");
-            writer.writeEndElement();
+            writeSimpleElement(writer,"askedRange",askedRange+"");
 
             writer.writeStartElement("report");
 
             for(int i = 0; i < resources.length; i++){
                 writer.writeStartElement("biomes");
+                writer.writeAttribute("range",i+1+"");
                 for(int j = 0; j < resources[i].length; j++){
-                    writer.writeEmptyElement("biome");
-                    writer.writeAttribute("name",resources[i][j].getResource());
+                    writer.writeStartElement("biome");
 
                     if(resources[i][j].getRate() != 0.0)
                         writer.writeAttribute("rate",resources[i][j].getRate()+"");
+
+                    writer.writeCharacters(resources[i][j].getResource());
+
+                    writer.writeEndElement();
                 }
                 writer.writeEndElement();
             }

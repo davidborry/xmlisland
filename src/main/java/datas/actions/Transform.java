@@ -40,11 +40,10 @@ public class Transform extends Action {
         try{
             writeInitialDatas(writer);
 
-
-
             for(int i = 0; i < keys.length; i++){
                 writer.writeEmptyElement("resource");
-                writer.writeAttribute(keys[i],resources.get(keys[i])+"");
+                writer.writeAttribute("type",keys[i]);
+                writer.writeAttribute("amount",resources.get(keys[i])+"");
             }
 
             writer.writeEndElement();

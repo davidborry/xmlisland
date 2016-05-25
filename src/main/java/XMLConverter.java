@@ -43,6 +43,9 @@ public class XMLConverter {
             Event[] events = eventsList.getEvents();
 
             writer.writeStartDocument();
+            writer.writeProcessingInstruction("xml-stylesheet",
+                    "type=\"text/css\" href=\"css/style.css\"");
+
             writer.writeStartElement("championship");
             for(int i = 0; i < events.length; i++)
                 events[i].writeDatas(writer);

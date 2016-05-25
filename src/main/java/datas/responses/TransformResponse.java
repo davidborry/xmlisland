@@ -34,19 +34,12 @@ public class TransformResponse extends Response {
         try{
 
             writeInitialDatas(writer);
-
             writer.writeStartElement("extras");
 
-            writer.writeStartElement("production");
-            writer.writeCharacters(production+"");
-            writer.writeEndElement();
-
-            writer.writeStartElement("kind");
-            writer.writeCharacters(kind);
-            writer.writeEndElement();
+            writeSimpleElement(writer,"production",production+"");
+            writeSimpleElement(writer,"kind",kind);
 
             writer.writeEndElement();
-
             writer.writeEndElement();
 
         }
