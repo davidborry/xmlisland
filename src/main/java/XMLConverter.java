@@ -34,12 +34,12 @@ public class XMLConverter {
 
     public EventsList getEventsList(){return eventsList;}
 
-    public void makeXML(){
+    public void makeXML(String path){
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
 
         try{
            // XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(System.out));
-            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(new FileWriter("output.xml")));
+            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(new FileWriter(path)));
             Event[] events = eventsList.getEvents();
 
             writer.writeStartDocument();

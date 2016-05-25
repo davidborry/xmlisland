@@ -13,11 +13,15 @@ public class Main {
     public static void main(String[] args) throws IOException{
 
         if(args.length > 0){
+            String path;
+            if(args.length >=2)
+                path = args[1];
+            else path = "output.xml";
             try {
 
                 XMLConverter xmlConverter = new XMLConverter(args[0]);
                 xmlConverter.extractJSON();
-                xmlConverter.makeXML();
+                xmlConverter.makeXML(path);
                 xmlConverter.writeStats();
             }
 

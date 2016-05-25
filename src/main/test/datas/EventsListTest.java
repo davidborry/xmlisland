@@ -71,7 +71,7 @@ public class EventsListTest {
         XMLConverter xmlConverter = new XMLConverter("resources/qdb.json");
         xmlConverter.extractJSON();
 
-        xmlConverter.makeXML();
+        xmlConverter.makeXML("test.xml");
 
         xmlConverter.writeStats();
 
