@@ -1,0 +1,60 @@
+
+        <!ELEMENT championship (event)*>
+        <!ELEMENT event (data|action|response)*>
+        <!ATTLIST event
+                meth CDATA #REQUIRED
+                part CDATA #REQUIRED
+                time CDATA #REQUIRED>
+        <!ELEMENT data (heading|men|contract|budget)*>
+        <!ELEMENT heading (#PCDATA)>
+        <!ELEMENT men (#PCDATA)>
+        <!ELEMENT contract (#PCDATA)>
+        <!ATTLIST contract
+                amount CDATA #REQUIRED
+                resource CDATA #REQUIRED>
+        <!ELEMENT budget (#PCDATA)>
+        <!ELEMENT action (parameters|creek|people|resource)*>
+        <!ATTLIST action
+                name CDATA #REQUIRED
+                style CDATA #IMPLIED>
+        <!ELEMENT parameters (direction|range)*>
+        <!ATTLIST parameters
+                resource CDATA #IMPLIED>
+        <!ELEMENT direction (#PCDATA)>
+        <!ELEMENT response (extras | exceptions | stackTrace | messages)*>
+        <!ATTLIST response
+                cost CDATA #IMPLIED
+                status CDATA #REQUIRED
+                style CDATA #IMPLIED>
+        <!ELEMENT extras (range|found|biomes|creeks|askedRange|report|resources|pois|amount|production|kind|altitude)*>
+        <!ELEMENT range (#PCDATA)>
+        <!ELEMENT found (#PCDATA)>
+        <!ELEMENT biomes (biome)*>
+        <!ATTLIST biomes
+                range CDATA #IMPLIED>
+        <!ELEMENT biome (#PCDATA)>
+        <!ATTLIST biome
+                rate CDATA #IMPLIED>
+        <!ELEMENT creeks (creek)*>
+        <!ELEMENT creek (#PCDATA)>
+        <!ELEMENT people (#PCDATA)>
+        <!ELEMENT askedRange (#PCDATA)>
+        <!ELEMENT report (biomes)*>
+        <!ELEMENT resources (resource)*>
+        <!ELEMENT resource (#PCDATA)>
+        <!ATTLIST resource
+                amount CDATA #IMPLIED
+                cond CDATA #IMPLIED
+                type CDATA #IMPLIED>
+        <!ELEMENT pois (#PCDATA)>
+        <!ELEMENT amount (#PCDATA)>
+        <!ELEMENT production (#PCDATA)>
+        <!ELEMENT kind (#PCDATA)>
+        <!ELEMENT altitude (#PCDATA)>
+        <!ELEMENT exceptions (exception)*>
+        <!ELEMENT exception (#PCDATA)>
+        <!ELEMENT stackTrace (trace)*>
+        <!ELEMENT messages (message)*>
+        <!ELEMENT trace (#PCDATA)>
+        <!ELEMENT message (#PCDATA)>
+

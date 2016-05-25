@@ -206,3 +206,8 @@ people::before{
 resource[cond]::before{
     content:"Amount :" attr(amount) " | Type : " attr(type) " | cond : " attr(cond);
 }
+
+action[name="stop"]{
+    background-color:black;
+    color:white;
+}
