@@ -1,9 +1,13 @@
 package main.test.datas.actions;
 
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 import main.java.datas.actions.Land;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,6 +35,11 @@ public class LandTest {
             assertEquals("land",name);
             assertEquals("id",creek);
             assertEquals(42,people);
+
+            XMLOutputFactory factory = XMLOutputFactory.newInstance();
+            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(System.out));
+
+            land.writeDatas(writer);
         }
 
         catch(JSONException e){

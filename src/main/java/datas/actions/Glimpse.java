@@ -35,9 +35,10 @@ public class Glimpse extends DirectionAction {
         try{
             writeInitialDatas(writer);
 
-            writer.writeEmptyElement("parameters");
-            writer.writeAttribute("direction",direction);
-            writer.writeAttribute("range",range+"");
+            writer.writeStartElement("parameters");
+            writeSimpleElement(writer,"direction",direction);
+            writeSimpleElement(writer,"range",range+"");
+            writer.writeEndElement();
 
             writer.writeEndElement();
 

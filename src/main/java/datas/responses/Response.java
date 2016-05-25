@@ -41,7 +41,7 @@ public class Response extends JSONData{
         }
 
         catch(JSONException e){
-            e.printStackTrace();
+            //e.printStackTrace();
             status = "ERROR";
             cost = 0;
 

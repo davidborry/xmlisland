@@ -8,6 +8,9 @@ import javax.xml.stream.XMLStreamException;
 
 /**
  * Created by david on 18/05/2016.
+ * Used for actions:
+ * -Echo
+ * -Heading
  */
 public class DirectionAction extends Action {
     protected JSONObject parameters;
@@ -36,8 +39,9 @@ public class DirectionAction extends Action {
         try{
             writeInitialDatas(writer);
 
-            writer.writeEmptyElement("parameters");
-            writer.writeAttribute("direction",direction);
+            writer.writeStartElement("parameters");
+            writeSimpleElement(writer,"direction",direction);
+            writer.writeEndElement();
 
             writer.writeEndElement();
 

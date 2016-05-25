@@ -1,9 +1,13 @@
 package main.test.datas.responses;
 
+import com.sun.xml.internal.txw2.output.IndentingXMLStreamWriter;
 import main.java.datas.responses.ScoutResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamWriter;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -34,9 +38,14 @@ public class ScoutResponseTest {
             assertEquals("FUR",resources[0]);
             assertEquals("WOOD",resources[1]);
 
+            XMLOutputFactory factory = XMLOutputFactory.newInstance();
+            XMLStreamWriter writer = new IndentingXMLStreamWriter(factory.createXMLStreamWriter(System.out));
+
+            r.writeDatas(writer);
+
         }
 
-        catch (JSONException e){
+        catch (Exception e){
             e.printStackTrace();
         }
     }

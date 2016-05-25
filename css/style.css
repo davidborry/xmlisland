@@ -1,17 +1,15 @@
 championship{
     display: block;
-	width:80%;
-	
-	margin-left:10%;
+
 }
 
 championship::before{
-	content: "Championship";
+	content: "Championship report";
 	
 	text-align:center;
-	font-size:500%;
-	width:50%;
-	margin-left:25%;
+	font-size:400%;
+	width:60%;
+	margin-left:30%;
 	
 	border: solid 2px red;
 }
@@ -20,51 +18,95 @@ response[status="OK"]{
 	color:blue;
 }
 
-response[status="OK"]{
-	color:blue;
-}
-
 action::before{
 	content: attr(name);
-}
+	padding:2%;
 
+}
 
 event{
+    position:relative;
+    width:60%;
     display: block;
+    margin-left:20%;
 }
 
-action {
+event[meth="initialize"]{
+    margin-top:5%;
+    margin-bottom:2%;
+    border:solid 2px black;
+}
+
+data *{
+    display:block;
+    margin-left:2%;
+}
+
+
+heading::before{
+    content:"Heading : ";
+    font-size:150%;
+}
+
+men::before{
+    content:"Men : ";
+    font-size:150%;
+}
+
+budget::before{
+    content:"Budget : ";
+    font-size:150%;
+}
+
+contract::before{
+    margin-left:2%;
+    content:"Contract : " attr(amount) " " attr(resource);
+    list-style-type:disc;
+    display:list-item;
+}
+
+action, response {
 display: block;
 padding-top:2%;
 border: solid 2px black;
 
-background-color:#99D3FF;
 }
 
-response[status="OK"]{
-display: block;
-padding-top:2%;
-border: solid 2px black;
-
-background-color:#A9FF92;
+action{
+    background-color:#99D3FF;
 }
 
-response[status="Error"]{
-display: block;
-padding-top:2%;
-border: solid 2px black;
-
-background-color:#FF4A24;
+action:hover{
+    background-color:#79B3DF;
 }
 
-event response{
+response{
 	margin-bottom:2%;
 }
 
-extras *{
-	
-	display:block;
+response[status="OK"]{
+    background-color:#A9FF92;
 }
+
+response[status="OK"]:hover{
+    background-color:#89DF72;
+}
+
+response[status="Error"]{
+    background-color:#FF4A24;
+}
+
+response[status="Error"]:hover{
+    background-color:#DF2904;
+}
+
+
+
+response *{
+	display:block;
+	padding-left:2%;
+}
+
 range::before{
 	content:"Range : ";
 }
@@ -73,26 +115,94 @@ found::before{
 	content:"Found : ";
 }
 
+exception,message{
+    color:white;
+}
 
-exception::before{
-	color:white;
-	content:"Fail :" attr(name);
-	
+exception{
 	font-size:200%;
 }
 
-stack::before{
-	content:"trace : " attr(trace);
-
-}
-
-message::before{
-	content: attr(name);
-	color:white;
-	
+message{
 	font-size:150%;
+	padding-bottom:1%;
 }
 
 stack,exception{
 	display:block;
+}
+
+action[flyID="2"]{
+	display:none;
+}
+
+response::before{
+    padding-left:2%;
+    content:"Cost : " attr(cost);
+}
+action[style="display:none;"], response[style="display:none;"]{
+	display:none;
+}
+
+direction::before{
+
+    content:"Direction: ";
+}
+
+extras biomes, extras creeks, resources{
+    display:inline-block;
+    border: solid black 1px;
+    min-width:40%;
+    text-align:center;
+    margin-bottom:2%;
+}
+
+
+
+biomes::before{
+    content:"Biome(s) : ";
+}
+
+biomes[range]::before{
+    content:"Range : " attr(range);
+}
+
+biome[rate]::after{
+   content:" ("attr(rate) "%)";
+}
+
+creeks::before{
+    content:"Creek(s) : ";
+}
+
+altitude::before{
+    content:"Altitude: ";
+}
+
+resources::before{
+    content:"Resource(s)";
+}
+
+parameters[resource]::before{
+    content:"Resource : " attr(resource);
+}
+
+amount::before{
+    content:"Amount : ";
+}
+
+action[name="land"]{
+    background-color:#FF8D23;
+}
+
+creek::before{
+    content:"Creek : ";
+}
+
+people::before{
+    content:" | People : ";
+}
+
+resource[cond]::before{
+    content:"Amount :" attr(amount) " | Type : " attr(type) " | cond : " attr(cond);
 }
