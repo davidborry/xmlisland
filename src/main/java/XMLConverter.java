@@ -44,7 +44,9 @@ public class XMLConverter {
 
             writer.writeStartDocument();
             writer.writeProcessingInstruction("xml-stylesheet",
-                    "type=\"text/css\" href=\"css/style.css\"");
+                    "type=\"text/css\" href=\"resources/style.css\"");
+
+            writer.writeDTD("\n<!DOCTYPE championship SYSTEM \"resources/championship.dtd\">\n");
 
             writer.writeStartElement("championship");
             for(int i = 0; i < events.length; i++)
