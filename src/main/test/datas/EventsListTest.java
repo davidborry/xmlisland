@@ -8,6 +8,9 @@ import main.java.datas.events.header.Contract;
 import main.java.datas.events.Event;
 import main.java.datas.events.EventsList;
 import main.java.datas.events.header.JSONHeader;
+import main.java.stats.ActionList;
+import main.java.stats.ResourcesList;
+import main.java.stats.Stats;
 import org.json.JSONArray;
 
 import org.json.JSONException;
@@ -34,7 +37,7 @@ public class EventsListTest {
 
     @Test
     public void JSONTest(){
-        XMLConverter xmlConverter = new XMLConverter("resources/qdb.json");
+        XMLConverter xmlConverter = new XMLConverter("resources/qae.json");
         xmlConverter.extractJSON();
 
         Event[] events = xmlConverter.getEventsList().getEvents();
@@ -73,7 +76,21 @@ public class EventsListTest {
 
         xmlConverter.makeXML("test.xml");
 
-        xmlConverter.writeStats();
+       // xmlConverter.writeStats();
 
+    }
+
+    @Test
+    public void statsTest(){
+        XMLConverter xmlConverter = new XMLConverter("trace.json");
+        xmlConverter.extractJSON();
+
+        EventsList eventsList = xmlConverter.getEventsList();
+       Stats stats = eventsList.getStats();
+
+       ActionList actionList = stats.getActionList();
+        ResourcesList resourcesList = stats.getResourcesList();
+        System.out.println(actionList);
+        System.out.println(resourcesList);
     }
 }

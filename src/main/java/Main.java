@@ -22,7 +22,8 @@ public class Main {
                 XMLConverter xmlConverter = new XMLConverter(args[0]);
                 xmlConverter.extractJSON();
                 xmlConverter.makeXML(path);
-                xmlConverter.writeStats();
+                xmlConverter.printStats("stats.log");
+
             }
 
             catch(NullPointerException e){

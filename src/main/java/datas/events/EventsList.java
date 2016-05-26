@@ -3,9 +3,12 @@ package main.java.datas.events;
 import main.java.datas.actions.*;
 import main.java.datas.events.header.JSONHeader;
 import main.java.datas.responses.*;
+import main.java.stats.Stats;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 /**
  * Created by david on 20/05/2016.
@@ -18,9 +21,13 @@ public class EventsList {
     private Action currentAction;
     private Response currentResponse;
 
+    private Stats stats;
+
     public EventsList(JSONArray jsonArray){
         this.jsonArray = jsonArray;
         events = new Event[jsonArray.length()];
+
+        stats = new Stats();
     }
 
     public void extractEvents(){
@@ -40,6 +47,7 @@ public class EventsList {
                 currentAction.extractDatas();
                 currentResponse.extractDatas();
 
+                updateStats();
                 //System.out.println(currentAction.getName() +"  " +currentResponse.getStatus());
 
                 actionEvent.setJsonData(currentAction);
@@ -51,12 +59,16 @@ public class EventsList {
 
                 events[i] = actionEvent;
                 events[i+1] = responseEvent;
+
             }
 
             catch(JSONException e){
                 e.printStackTrace();
             }
         }
+
+        stats.makeProportions();
+        stats.sort();
     }
 
     public void identify(String name, JSONObject action, JSONObject response){
@@ -138,6 +150,46 @@ public class EventsList {
             e.printStackTrace();
         }
     }
+
+    public void updateStats(){
+        String action = currentAction.getName();
+        int cost = currentResponse.getCost();
+        stats.addAction(action,cost);
+
+        updateResourceStats(action);
+    }
+
+    public void updateResourceStats(String action){
+        if(action.equals("exploit")){
+            Exploit exploit = (Exploit) currentAction;
+            ExploitResponse exploitResponse = (ExploitResponse) currentResponse;
+
+            String resource = exploit.getResource();
+            int amount = exploitResponse.getAmount();
+
+            stats.addResource(resource,amount);
+        }
+
+        else if(action.equals("transform")){
+            Transform transform = (Transform) currentAction;
+            TransformResponse transformResponse = (TransformResponse) currentResponse;
+
+            HashMap<String,Integer> resources = transform.getResources();
+            String[] keys = new String[resources.keySet().size()];
+            resources.keySet().toArray(keys);
+
+            for(int i = 0; i < resources.size(); i++)
+                if(i < keys.length)
+                    stats.removeResource(keys[i],resources.get(keys[i]));
+
+            String kind = transformResponse.getKind();
+            int production = transformResponse.getProduction();
+
+            stats.addResource(kind,production);
+        }
+    }
+
+    public Stats getStats(){return stats;}
 
     public Event[] getEvents(){
         return events;

@@ -10,6 +10,8 @@ import java.io.IOException;
 
 /**
  * Created by david on 18/05/2016.
+ * Extracts JSON datas from a given
+ * text file
  */
 public class JSONFile {
     private String path;

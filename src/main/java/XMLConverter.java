@@ -5,11 +5,14 @@ import main.java.datas.JSONFile;
 import main.java.datas.events.Event;
 import main.java.datas.events.EventsList;
 import main.java.datas.responses.Response;
+import main.java.stats.Stats;
 
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
+import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 
 /**
  * Created by david on 21/05/2016.
@@ -68,11 +71,20 @@ public class XMLConverter {
         }
     }
 
-    public void writeStats(){
-        writeTotalCost();
-    }
 
     public void writeTotalCost(){
         System.out.println("TOTAL COST : " + Response.getTotalCost());
+    }
+
+    public void printStats(String path){
+        writeTotalCost();
+        try {
+            PrintWriter writer = new PrintWriter(path, "UTF-8");
+            writer.println(eventsList.getStats());
+            writer.close();
+
+        }
+
+        catch(Exception e){}
     }
 }

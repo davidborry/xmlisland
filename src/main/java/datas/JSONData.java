@@ -7,6 +7,8 @@ import javax.xml.stream.XMLStreamWriter;
 
 /**
  * Created by david on 20/05/2016.
+ * Extracts datas from JSON object
+ * and convert them into XML
  */
 public abstract class JSONData {
     protected JSONObject jsonObject;

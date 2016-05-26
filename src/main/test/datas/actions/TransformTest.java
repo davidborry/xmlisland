@@ -51,4 +51,25 @@ public class TransformTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void statsTest(){
+        try {
+            jsonObject = new JSONObject(s);
+            transform = new Transform(jsonObject);
+            transform.extractDatas();
+
+            HashMap<String,Integer> resources2 = transform.getResources();
+            String[] keys = new String[resources2.keySet().size()];
+            resources2.keySet().toArray(keys);
+
+           for(int i = 0; i < keys.length; i++)
+               System.out.println(keys[i]);
+        }
+
+        catch(JSONException e){
+            e.printStackTrace();
+        }
+
+    }
 }
