@@ -50,23 +50,13 @@ public class JSONHeader extends JSONData {
         try{
             writer.writeStartElement("data");
 
-            writer.writeStartElement("heading");
-            writer.writeCharacters(heading);
-            writer.writeEndElement();
+            writeSimpleElement(writer,"heading",heading);
+            writeSimpleElement(writer,"men",men+"");
 
-            writer.writeStartElement("men");
-            writer.writeCharacters(men+"");
-            writer.writeEndElement();
+            for(int i = 0; i < contracts.length; i++)
+                contracts[i].writeDatas(writer);
 
-            for(int i = 0; i < contracts.length; i++){
-                writer.writeEmptyElement("contract");
-                writer.writeAttribute("amount",contracts[i].getAmount()+"");
-                writer.writeAttribute("resource",contracts[i].getResource());
-            }
-
-            writer.writeStartElement("budget");
-            writer.writeCharacters(budget+"");
-            writer.writeEndElement();
+            writeSimpleElement(writer,"budget",budget+"");
 
             writer.writeEndElement();
         }

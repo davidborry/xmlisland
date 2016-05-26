@@ -67,6 +67,7 @@ public class EventsList {
             }
         }
 
+        manageContract();
         stats.makeProportions();
         stats.sort();
     }
@@ -190,6 +191,11 @@ public class EventsList {
     }
 
     public Stats getStats(){return stats;}
+
+    public void manageContract(){
+      JSONHeader jsonHeader = (JSONHeader) events[0].getJSONData();
+        stats.manageContract(jsonHeader.getContracts());
+    }
 
     public Event[] getEvents(){
         return events;

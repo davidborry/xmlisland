@@ -7,6 +7,7 @@ package main.java.stats;
 public class ResourceStats {
     private String name;
     private int amount;
+    private static int TOTALRESOURCES = 0;
 
     public ResourceStats(String name){
         this.name = name;
@@ -14,10 +15,12 @@ public class ResourceStats {
 
     public void add(int amount){
         this.amount+=amount;
+        TOTALRESOURCES+=amount;
     }
 
     public void remove(int amount){
         this.amount-=amount;
+        TOTALRESOURCES-=amount;
     }
 
     public boolean matches(String name){
@@ -30,6 +33,10 @@ public class ResourceStats {
     @Override
     public String toString(){
         return "["+name+"] " + amount + " units\n";
+    }
+
+    public static int getTotalResources(){
+        return TOTALRESOURCES;
     }
 
 }

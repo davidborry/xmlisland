@@ -9,7 +9,7 @@ import java.util.List;
  * Created by david on 26/05/2016.
  */
 public class ResourcesList {
-    public List<ResourceStats> list;
+    private List<ResourceStats> list;
 
     public ResourcesList(){
         list = new ArrayList();
@@ -50,6 +50,17 @@ public class ResourcesList {
         if(contains(name))
             return list.get(indexOf(name));
         return null;
+    }
+
+    public ResourceStats getResourceStats(int i){
+        if(i<list.size())
+            return list.get(i);
+
+        return null;
+    }
+
+    public int size(){
+        return list.size();
     }
 
     public void sort(){

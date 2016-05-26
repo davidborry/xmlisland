@@ -39,6 +39,13 @@ public class ActionList {
         return null;
     }
 
+    public ActionStats getActionStats(int i){
+        if(i < list.size())
+            return list.get(i);
+
+        return null;
+    }
+
     public int indexOf(String action){
         for(int i = 0; i < list.size(); i++)
             if(list.get(i).matches(action))

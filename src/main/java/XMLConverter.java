@@ -71,13 +71,7 @@ public class XMLConverter {
         }
     }
 
-
-    public void writeTotalCost(){
-        System.out.println("TOTAL COST : " + Response.getTotalCost());
-    }
-
     public void printStats(String path){
-        writeTotalCost();
         try {
             PrintWriter writer = new PrintWriter(path, "UTF-8");
             writer.println(eventsList.getStats());

@@ -24,6 +24,7 @@ public class Main {
                 xmlConverter.makeXML(path);
                 xmlConverter.printStats("stats.log");
 
+                System.out.println("Conversion done");
             }
 
             catch(NullPointerException e){
