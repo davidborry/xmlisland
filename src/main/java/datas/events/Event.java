@@ -7,6 +7,9 @@ import org.json.JSONObject;
 
 /**
  * Created by david on 20/05/2016.
+ * Event datas are objects containing either an Action, Response, JSONHeader or Error object.
+ * They also have information about their users and the method used
+ * Extracts and converts event datas and their content in XML
  */
 public class Event extends JSONData {
     private JSONObject data;

@@ -12,6 +12,13 @@ import java.util.HashMap;
 
 /**
  * Created by david on 20/05/2016.
+ * Extract and convert all JSON events from a given JSON array
+ * We already know how a championship JSON report is made :
+ *  -First array item is the header and contract description
+ *  -Remaining items are couple action/responses
+ *  -Last item can be an error
+ *
+ *  We assume all these conditions are always respected
  */
 public class EventsList {
 
@@ -30,6 +37,17 @@ public class EventsList {
         stats = new Stats();
     }
 
+    /**
+     * Starts from the second element of JSON array
+     * (first one being the header, we only want actions and responses)
+     * Array is processed with a 2 length step.
+     * For the first item we extract, identify an Action object and for
+     * the second one, we extract a Response object
+     *
+     * During the process, stats are always updated
+     * At the end we know the total cost and amount of collected resources
+     * so we can generate proportions and sort stats
+     */
     public void extractEvents(){
         makeHeader();
         for(int i = 1; i < jsonArray.length()-1; i+=2){
@@ -72,6 +90,14 @@ public class EventsList {
         stats.sort();
     }
 
+    /**
+     * Instanciate a particular action/response item
+     * based on a given name
+     *
+     * @param name action name
+     * @param action
+     * @param response
+     */
     public void identify(String name, JSONObject action, JSONObject response){
         switch(name){
             case "fly":
@@ -134,6 +160,9 @@ public class EventsList {
         }
     }
 
+    /**
+     * Extracts header and contract datas from the first event
+     */
     public void makeHeader(){
         try{
             Event event = new Event(jsonArray.getJSONObject(0));
@@ -152,6 +181,9 @@ public class EventsList {
         }
     }
 
+    /**
+     * Update action and resources stats
+     */
     public void updateStats(){
         String action = currentAction.getName();
         int cost = currentResponse.getCost();
@@ -160,6 +192,11 @@ public class EventsList {
         updateResourceStats(action);
     }
 
+    /**
+     * Update collected and crafted resources stats based
+     * on a given action name
+     * @param action (must be exploit or transform)
+     */
     public void updateResourceStats(String action){
         if(action.equals("exploit")){
             Exploit exploit = (Exploit) currentAction;

@@ -9,6 +9,8 @@ import java.util.Calendar;
 
 /**
  * Created by david on 26/05/2016.
+ * Contains action and resource stats
+ * and represents them in a text format
  */
 public class Stats {
     private ActionList actionList;
@@ -47,6 +49,11 @@ public class Stats {
 
     public ResourcesList getResourcesList() {return resourcesList;}
 
+    /**
+     * If the resource stats contain an item matching a contract requirements,
+     * it's validated
+     * @param contracts
+     */
     public void manageContract(Contract[] contracts){
         this.contracts = contracts;
 

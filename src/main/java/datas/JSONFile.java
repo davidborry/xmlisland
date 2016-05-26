@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Created by david on 18/05/2016.
+ * Created by Justin on 18/05/2016.
  * Extracts JSON datas from a given
  * text file
  */
@@ -32,6 +32,10 @@ public class JSONFile {
 
     }
 
+    /**
+     * All JSON championship reports are stored in a JSON array
+     * We use it as a start point for conversion
+     */
     public void extractJson(){
 
         try{
@@ -47,6 +51,11 @@ public class JSONFile {
         return jsonDatas;
     }
 
+    /**
+     *
+     * @return String content from file
+     * @throws IOException
+     */
     public String readFile() throws IOException{
         String s = "";
 

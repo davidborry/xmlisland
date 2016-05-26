@@ -6,8 +6,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by david on 19/05/2016.
+ * Created by Justin on 19/05/2016.
  * Used for action Scan
+ * Extracts and converts biomes and creeks arrays from JSONDatas
  */
 public class ScanResponse extends Response{
     private String[] biomes, creeks;

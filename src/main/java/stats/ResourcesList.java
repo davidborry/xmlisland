@@ -7,7 +7,9 @@ import java.util.List;
 
 /**
  * Created by david on 26/05/2016.
+ *A list containing all different ResourceStats objects
  */
+
 public class ResourcesList {
     private List<ResourceStats> list;
 
@@ -22,6 +24,11 @@ public class ResourcesList {
     }
 
 
+    /**
+     * Called when a resource is used for crafting
+     * @param name
+     * @param amount
+     */
     public void remove(String name, int amount){
         if(contains(name)) {
             list.get(indexOf(name)).remove(amount);
@@ -63,6 +70,9 @@ public class ResourcesList {
         return list.size();
     }
 
+    /**
+     * Sorts the list based on each item's amount. Decreasing order
+     */
     public void sort(){
         Collections.sort(list, new Comparator<ResourceStats>() {
             @Override

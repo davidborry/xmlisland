@@ -16,20 +16,27 @@ import javax.xml.stream.XMLStreamException;
  *  -Stop
  *  -Land
  *  -Move_To
+ *  Response objects all have status, cost and extras datas
  */
 public class Response extends JSONData{
     protected String status;
     protected int cost;
     protected JSONObject extras;
 
+    //If we can't generate a Response from JSONDatas, then it's a championship error
     private Error error;
 
     public Response(JSONObject jsonObject){
         super(jsonObject);
     }
 
-    private static int TOTAL_COST = 0, FLY_COST=0, HEADING_COST=0, STOP_COST=0, LAND_COST=0,MOVE_COST=0;
+    private static int TOTAL_COST = 0;
 
+    /**
+     * First extract common response attributes
+     * If one of them is missing, then the response type is
+     * an error that prematurely ended the championship.
+     */
     @Override
     public void extractDatas(){
         try{
@@ -78,6 +85,13 @@ public class Response extends JSONData{
 
     public Error getError() {return error;}
 
+    /**
+     * Writes initial datas
+     * Like for fly action, we add css rule to only show
+     * the first item of a fly action/response serie.
+     * @param writer
+     * @throws XMLStreamException
+     */
     public void writeInitialDatas(javax.xml.stream.XMLStreamWriter writer) throws XMLStreamException{
         writer.writeStartElement("response");
         writer.writeAttribute("status",status);
@@ -90,29 +104,5 @@ public class Response extends JSONData{
     }
 
     public static int getTotalCost(){return TOTAL_COST;}
-
-    public void incrementActionCost(String name){
-        TOTAL_COST+=cost;
-        switch(name){
-            case "fly":
-                FLY_COST+=cost;
-                break;
-            case "heading":
-                HEADING_COST+=cost;
-                break;
-            case "stop":
-                STOP_COST+=cost;
-                break;
-            case "land":
-                LAND_COST+=cost;
-                break;
-            case "move_to":
-                MOVE_COST+=cost;
-                break;
-
-            default:
-                break;
-        }
-    }
 
 }

@@ -3,8 +3,11 @@ package main.java.stats;
 import java.text.DecimalFormat;
 
 /**
- * Created by david on 26/05/2016.
+ * Created by Justin on 26/05/2016.
  * Stats for explorer actions (cost, proportions etc...)
+ *
+ * Also contains total action cost and occurences
+ * These to variables are used for proportions estimation.
  */
 public class ActionStats {
     protected String name;

@@ -7,6 +7,10 @@ import java.io.IOException;
 
 /**
  * Created by david on 17/05/2016.
+ * Main class
+ * Two parameters required :
+ *  -arg1 : JSON file to convert
+ *  -arg2 : XML file name (optional)
  */
 public class Main {
 

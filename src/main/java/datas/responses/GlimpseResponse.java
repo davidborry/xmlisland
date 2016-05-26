@@ -8,6 +8,8 @@ import org.json.JSONObject;
 
 /**
  * Created by david on 19/05/2016.
+ * Extracts and converts 2-dimensional array containing biomes
+ * informations with a given direction and range
  */
 public class GlimpseResponse extends Response {
 
@@ -19,6 +21,12 @@ public class GlimpseResponse extends Response {
         super(jsonObject);
     }
 
+    /**
+     * First we initialize the resource array based on jsonarray length.
+     * Then we create a GlimpseResource for each biome in a given cell
+     * If range is short (<2) we also extract extra attribute rate, else we
+     * set it at 0
+     */
     @Override
     public void extractDatas(){
         super.extractDatas();
@@ -49,15 +57,17 @@ public class GlimpseResponse extends Response {
         }
     }
 
+    /**
+     * Hide rate attribute if value is 0
+     * @param writer
+     */
     @Override
     public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
         try{
 
             writeInitialDatas(writer);
             writer.writeStartElement("extras");
-
             writeSimpleElement(writer,"askedRange",askedRange+"");
-
             writer.writeStartElement("report");
 
             for(int i = 0; i < resources.length; i++){
@@ -70,16 +80,13 @@ public class GlimpseResponse extends Response {
                         writer.writeAttribute("rate",resources[i][j].getRate()+"");
 
                     writer.writeCharacters(resources[i][j].getResource());
-
                     writer.writeEndElement();
                 }
                 writer.writeEndElement();
             }
 
             writer.writeEndElement();
-
             writer.writeEndElement();
-
             writer.writeEndElement();
 
     }

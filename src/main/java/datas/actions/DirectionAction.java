@@ -11,6 +11,7 @@ import javax.xml.stream.XMLStreamException;
  * Used for actions:
  * -Echo
  * -Heading
+ * -Scout
  */
 public class DirectionAction extends Action {
     protected JSONObject parameters;

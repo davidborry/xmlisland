@@ -19,6 +19,12 @@ public class Transform extends Action {
         resources = new HashMap();
     }
 
+    /**
+     * An HashMap is used for resources data.
+     * Because we don't know the keys yet, we must
+     * first initialize a key array based on the
+     * content of JSONObject parameters
+     */
     @Override
     public void extractDatas(){
         super.extractDatas();

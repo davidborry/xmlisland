@@ -8,7 +8,10 @@ import org.json.JSONObject;
 import javax.xml.stream.XMLStreamException;
 
 /**
- * Created by david on 20/05/2016.
+ * Created by Justin on 20/05/2016.
+ * Represent a contract with needed resource informations
+ * Contract is validated when the player has collected
+ * all the necessary amount
  */
 public class Contract extends JSONData {
 

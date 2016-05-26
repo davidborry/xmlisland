@@ -16,6 +16,9 @@ import java.io.PrintWriter;
 
 /**
  * Created by david on 21/05/2016.
+ *
+ * Extracts all the datas from a given
+ * json file and convert them into XML
  */
 public class XMLConverter {
 
@@ -37,6 +40,12 @@ public class XMLConverter {
 
     public EventsList getEventsList(){return eventsList;}
 
+    /**
+     * convert the content of Event array in XML via
+     * the classes and methods from package javax.xml.stream
+     * Also includes css and DTD path
+     * @param path xml file name
+     */
     public void makeXML(String path){
         XMLOutputFactory factory = XMLOutputFactory.newInstance();
 
@@ -71,6 +80,10 @@ public class XMLConverter {
         }
     }
 
+    /**
+     * write championship stats from JSON/XML datas into a log file
+     * @param path log file name
+     */
     public void printStats(String path){
         try {
             PrintWriter writer = new PrintWriter(path, "UTF-8");

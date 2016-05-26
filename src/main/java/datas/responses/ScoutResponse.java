@@ -6,7 +6,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by david on 19/05/2016.
+ * Created by Justin on 19/05/2016.
+ * extracts and converts altitude and resource array from JSONDatas
  */
 public class ScoutResponse extends Response{
     private int altitude;

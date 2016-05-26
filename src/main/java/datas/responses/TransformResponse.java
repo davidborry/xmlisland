@@ -5,7 +5,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by david on 19/05/2016.
+ * Created by Justin on 19/05/2016.
+ * Extracts and converts production and kind value from JSONDatas
  */
 public class TransformResponse extends Response {
     private int production;

@@ -8,7 +8,8 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by david on 26/05/2016.
+ * Created by Justin on 26/05/2016.
+ * A list containing all different ActionStats objects (12)
  */
 public class ActionList {
     private List<ActionStats> list;
@@ -18,6 +19,11 @@ public class ActionList {
     }
 
 
+    /**
+     * add cost to action total cost in the list
+     * @param action
+     * @param cost
+     */
     public void add(String action, int cost){
         if(contains(action)) {
             ActionStats actionStats = list.get(indexOf(action));
@@ -25,6 +31,9 @@ public class ActionList {
         }
     }
 
+    /**
+     * Make proportion for each list item based on values of ALLACTIONS and ALLACTIONSCOST
+     */
     public void makeProportions(){
         for(int i = 0; i < list.size(); i++){
             list.get(i).setProportion();
@@ -84,6 +93,9 @@ public class ActionList {
         return s;
     }
 
+    /**
+     * Sorts list based on number of occurences for each action. Decreasing order
+     */
     public void sort(){
         Collections.sort(list, new Comparator<ActionStats>() {
             @Override
@@ -97,6 +109,9 @@ public class ActionList {
         });
     }
 
+    /**
+     * Sorts list based on total cost for each action. Decreasing order
+     */
     public void sortbyCost(){
         Collections.sort(list, new Comparator<ActionStats>() {
             @Override

@@ -4,7 +4,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by david on 19/05/2016.
+ * Created by Justin on 19/05/2016.
+ * Used for ExploreResponse
+ * Represents a resource object with information about
+ * amount, resource name and condition
  */
 public class ExploredResource {
     private String amount, resource, cond;

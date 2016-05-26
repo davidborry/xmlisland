@@ -7,7 +7,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * Created by david on 19/05/2016.
+ * Created by Justin on 19/05/2016.
+ * Extracts and converts all resources and creeks datas
+ * from an explore action response
+ * Creeks and resources are stored in two different arrays
  */
 public class ExploreResponse extends Response {
     private ExploredResource[] resources;
@@ -42,6 +45,10 @@ public class ExploreResponse extends Response {
         }
     }
 
+    /**
+     * Resources are represented as empty elements with 3 attributes (amount, type and condition)
+     * @param writer
+     */
     @Override
     public void writeDatas(javax.xml.stream.XMLStreamWriter writer){
         try{
